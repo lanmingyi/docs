@@ -1,0 +1,118 @@
+import { defineConfig } from 'vitepress'
+import { resolve } from 'path'
+import { fileURLToPath } from 'url'
+import { componentPreview, containerPreview } from '@vitepress-demo-preview/plugin'
+import { viteExternalsPlugin } from 'vite-plugin-externals'
+import cesium from 'vite-plugin-cesium'
+import type { Plugin } from 'vite'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+
+function ssrStubCesiumNavigation(): Plugin {
+  let isSSR = false
+  return {
+    name: 'ssr-stub-cesium-navigation',
+    enforce: 'pre',
+    configResolved(config) {
+      isSSR = !!(config as any).build.ssr
+    },
+    resolveId(source: string) {
+      if (source === 'cesium-navigation-es6' && isSSR) {
+        return '\0stub:cesium-navigation-es6'
+      }
+    },
+    load(id: string) {
+      if (id === '\0stub:cesium-navigation-es6') {
+        return 'export default function CesiumNavigation() {}'
+      }
+    }
+  }
+}
+
+export default defineConfig({
+  base: '/docs/',
+  title: '文档',
+  description: '',
+  head: [
+    ['link', { rel: 'stylesheet', href: '/docs/cesium/Widgets/widgets.css' }],
+  ],
+  vite: {
+    resolve: {
+      alias: [
+        { find: /^@simple\/cesium$/, replacement: resolve(__dirname, '../public/simple-cesium/index.js') },
+      ]
+    },
+    server: { fs: { allow: ['..', '../..'] } },
+    define: {
+      'CESIUM_BASE_URL': JSON.stringify('/docs/cesium/'),
+    },
+    plugins: [
+      ssrStubCesiumNavigation(),
+      process.env.NODE_ENV !== 'production' ? cesium() : undefined,
+      // cesium({ rebuildCesium: true }),
+    ].filter(Boolean),
+    optimizeDeps: {
+      include: [
+        'cesium',
+        'cesium-navigation-es6',
+        '@turf/turf',
+        'proj4',
+        'satellite.js',
+        '@vueuse/core',
+        'dayjs'
+      ],
+    },
+    ssr: {
+      external: ['cesium'], 
+      noExternal: ['pinia'],
+    },
+
+  },
+  markdown: {
+    config(md: any) {
+      md.use(componentPreview)
+      md.use(containerPreview)
+    }
+  },
+  themeConfig: {
+    docFooter: { prev: '上一篇', next: '下一篇' },
+    nav: [
+      { text: '首页', link: '/' },
+      { text: '项目', link: '/projects/task-platform/' },
+      { text: 'Cesium', link: '/components/simple-cesium/' },
+      { text: 'UI组件', link: '/components/simple-ui/' },
+    ],
+    sidebar: {
+      '/projects/': [
+        {
+          text: '任务平台', collapsed: false, items: [
+            { text: '项目概述', link: '/projects/task-platform/' },
+            { text: '移动端', link: '/projects/task-platform/part1-mobile' },
+            { text: '管理端', link: '/projects/task-platform/part2-admin' }
+          ]
+        },
+        {
+          text: '虚拟仿真实验教学平台', collapsed: false, items: [
+            { text: '项目概述', link: '/projects/vsimet-platform/' },
+            { text: '学生端', link: '/projects/vsimet-platform/student' },
+            { text: '管理端', link: '/projects/vsimet-platform/admin' },
+            { text: '智慧教室H5', link: '/projects/vsimet-platform/h5' }
+          ]
+        }
+      ],
+      '/components/simple-cesium/': [
+        {
+          text: 'Simple Cesium', items: [
+            { text: 'CViewer', link: '/components/simple-cesium/guide/components' },
+          ]
+        },
+      ],
+      '/components/simple-ui/': [
+        {
+          text: 'Simple UI 组件', items: [
+          ]
+        },
+      ],
+    }
+  }
+})

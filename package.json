@@ -5,6 +5,20 @@
         "docs:preview": "vitepress preview docs"
     },
     "devDependencies": {
+        "@vitepress-demo-preview/component": "^2.6.2",
+        "@vitepress-demo-preview/plugin": "^1.4.1",
+        "vite-plugin-externals": "^0.6.2",
         "vitepress": "^1.6.3"
+    },
+    "dependencies": {
+        "@turf/turf": "^6.5.0",
+        "cesium": "^1.143.0",
+        "cesium-navigation-es6": "^3.0.8",
+        "element-plus": "^2.14.3",
+        "naive-ui": "^2.44.1",
+        "pinia": "^4.0.2",
+        "proj4": "^2.9.2",
+        "satellite.js": "^5.0.0",
+        "vite-plugin-cesium": "^1.2.23"
     }
 }

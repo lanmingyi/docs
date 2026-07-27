@@ -5,6 +5,13 @@ aside: false
 
 # 首页
 
+## 组件展示
+
+| 组件 | 说明 | 
+|------|------|
+| [simple-cesium](/components/simple-cesium/) | 基于 Cesium 与 Vue 3 的地理信息可视化组件库  |
+| [simple-ui](/components/simple-ui/) |  |
+
 ## 项目展示
 
 <!-- <style>

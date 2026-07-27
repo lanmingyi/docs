@@ -43,4 +43,4 @@
 
 - [学生端](/projects/vsimet-platform/student) — Web 端学生操作手册
 - [管理端](/projects/vsimet-platform/admin) — Web 端管理操作手册
-- [智慧教室H5](/projects/vsimet-platform/miniprogram) — 移动端操作手册
+- [智慧教室H5](/projects/vsimet-platform/h5) — 移动端操作手册
