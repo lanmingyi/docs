@@ -42,7 +42,10 @@ export default defineConfig({
         { find: /^@simple\/cesium$/, replacement: resolve(__dirname, '../public/simple-cesium/index.js') },
       ]
     },
-    server: { fs: { allow: ['..', '../..'] } },
+    server: {
+      port: 50000,
+      fs: { allow: ['..', '../..'] }
+    },
     define: {
       'CESIUM_BASE_URL': JSON.stringify('/docs/cesium/'),
     },
@@ -63,10 +66,9 @@ export default defineConfig({
       ],
     },
     ssr: {
-      external: ['cesium'], 
+      // external: ['cesium'], 
       noExternal: ['pinia'],
     },
-
   },
   markdown: {
     config(md: any) {
@@ -103,7 +105,9 @@ export default defineConfig({
       '/components/simple-cesium/': [
         {
           text: 'Simple Cesium', items: [
-            { text: 'CViewer', link: '/components/simple-cesium/guide/components' },
+            { text: '快速开始', link: '/components/simple-cesium/guide/index' },
+            { text: 'Components', link: '/components/simple-cesium/guide/components' },
+            { text: 'Hooks', link: '/components/simple-cesium/guide/hooks' },
           ]
         },
       ],
