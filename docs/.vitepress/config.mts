@@ -107,7 +107,10 @@ export default defineConfig({
           text: 'Simple Cesium', items: [
             { text: '快速开始', link: '/components/simple-cesium/guide/index' },
             { text: 'Components', link: '/components/simple-cesium/guide/components' },
-            { text: 'Hooks', link: '/components/simple-cesium/guide/hooks' },
+            { text: 'Core', link: '/components/simple-cesium/guide/core' },
+            { text: 'Utils', link: '/components/simple-cesium/guide/utils' },
+            { text: 'Extensions', link: '/components/simple-cesium/guide/extensions' },
+            { text: 'ViewModel', link: '/components/simple-cesium/guide/view-model' },
           ]
         },
       ],

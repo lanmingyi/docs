@@ -28,18 +28,18 @@ import { CViewer, CInfoPopup, CRightMenu} from '@simple/cesium'
 
 ```vue
 <template>
-  <CViewer name="my-viewer" @viewer-created="onCreated">
-    <CInfoPopup />
-    <CRightMenu />
-  </CViewer>
+  <c-viewer name="my-viewer" @viewer-created="onCreated">
+    <c-info-popup />
+    <c-rightMenu />
+  </c-viewer>
 </template>
 
 <script setup lang="ts">
-import { Viewer } from 'cesium'
+import { onViewerCreated } from '@simple/cesium'
 
-const onCreated = () => {
-  console.log('Viewer 已创建')
-}
+const onViewerCreated((viewer) => {
+  console.log('viewer 已创建')
+})
 </script>
 ```
 

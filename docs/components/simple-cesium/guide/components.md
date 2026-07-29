@@ -87,7 +87,7 @@ rightMenu.clearByGroup('customGroup') // 按组清除
 
 ### Props
 
-| 参数 | 类型 | 默认值 | 说明 |
+<!-- | 参数 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `duration` | `number` | `3` | 重置动画时长（秒） |
 | `enableCompass` | `boolean` | `true` | 是否显示指南针 |
@@ -96,7 +96,7 @@ rightMenu.clearByGroup('customGroup') // 按组清除
 | `enableCompassOuterRing` | `boolean` | `true` | 是否显示指南针外环 |
 | `resetTooltip` | `string` | `'重置'` | 重置按钮提示文字 |
 | `zoomInTooltip` | `string` | `'放大'` | 放大按钮提示文字 |
-| `zoomOutTooltip` | `string` | `'缩小'` | 缩小按钮提示文字 |
+| `zoomOutTooltip` | `string` | `'缩小'` | 缩小按钮提示文字 | -->
 
 
 

@@ -1,7 +1,7 @@
 <template>
   <div class="demo-box">
     <ClientOnly>
-      <CViewer>
+      <c-viewer>
         <div class="toolbar">
           <div class="toolbar-row">
             <span class="label">绘图</span>
@@ -21,11 +21,11 @@
             <button @click="clearMat">清除</button>
           </div>
         </div>
-        <CInfoPopup v-if="entityData" :data="entityData" @close="onClose" />
-        <CNavigation :defaultResetView="resetPosition" />
-        <CScale />
-        <CRightMenu />
-      </CViewer>
+        <c-info-popup v-if="entityData" :data="entityData" @close="onClose" />
+        <c-rightMenu />
+        <c-navigation :defaultResetView="resetPosition" />
+        <c-scale />
+      </c-viewer>
     </ClientOnly>
   </div>
 </template>
@@ -37,9 +37,11 @@ import { useDrawPointArea, useDrawPolylineArea, useDrawPolygonArea, useDrawRecta
 import { Cartesian3, Cartographic, Color, Material, Primitive, EllipseGeometry, RectangleGeometry, Rectangle, CorridorGeometry, GeometryInstance, MaterialAppearance, VertexFormat, SceneMode, Entity, DistanceDisplayCondition, CallbackProperty, Transforms, Matrix4 } from 'cesium'
 
 defaultConfig.defaultImageryUrl = {
-  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  // url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  url: '/docs/map/blue-marble/{z}/{x}/{y}.jpg',
   minimumLevel: 0,
-  maximumLevel: 19
+  // maximumLevel: 19
+  maximumLevel: 4
 } as any
 defaultConfig.viewerConfig.sceneMode = SceneMode.SCENE3D
 defaultConfig.DEFAULT_VIEWER_NAME = 'demo-viewer'
@@ -352,7 +354,7 @@ rightMenu.setMenu({ group: 'demo', key: 'info', label: '查看属性', isShow: (
 }
 
 .toolbar button {
-  padding: 2px 5px;
+  padding: 1px 5px;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
