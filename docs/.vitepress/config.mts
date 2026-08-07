@@ -39,7 +39,8 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: [
-        { find: /^@simple\/cesium$/, replacement: resolve(__dirname, '../public/simple-cesium/index.js') },
+        { find: /^@simple\/cesium$/, replacement: resolve(__dirname, '../public/simple/cesium/dist') },
+        { find: /^@simple\/cesium\/(.*)$/, replacement: resolve(__dirname, '../public/simple/cesium/dist/$1') },
       ]
     },
     server: {
@@ -106,7 +107,7 @@ export default defineConfig({
         {
           text: 'Simple Cesium', items: [
             { text: '快速开始', link: '/components/simple-cesium/guide/index' },
-            { text: 'Components', link: '/components/simple-cesium/guide/components' },
+            { text: '组件', link: '/components/simple-cesium/guide/components' },
             { text: 'Core', link: '/components/simple-cesium/guide/core' },
             { text: 'Utils', link: '/components/simple-cesium/guide/utils' },
             { text: 'Extensions', link: '/components/simple-cesium/guide/extensions' },
@@ -116,7 +117,7 @@ export default defineConfig({
       ],
       '/components/simple-ui/': [
         {
-          text: 'Simple UI 组件', items: [
+          text: 'Simple UI', items: [
           ]
         },
       ],

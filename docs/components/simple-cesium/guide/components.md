@@ -1,7 +1,7 @@
-# Vue 组件
+# Cesium 组件
 
 ::: preview
-demo-preview=./CesiumViewer.vue
+demo-preview=./components.vue
 :::
 
 ## CViewer
@@ -111,6 +111,19 @@ rightMenu.clearByGroup('customGroup') // 按组清除
 | `viewerName` | `string` | `'cesium-box'` | 关联的 Viewer 名称 |
 | `count` | `number` | `3` | 显示几个刻度 |
 | `updateType` | `'change' \| 'update'` | `'change'` | 更新方式：相机变化时或每帧更新 |
+
+## CModelView
+
+3D 模型查看器，基于 `CesiumWidget` 独立渲染 glTF 模型。
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `url` | `string` | `''` | 模型 glTF 地址 |
+| `scale` | `number` | `1` | 模型缩放比例 |
+| `backgroundColor` | `string` | `'#fff'` | 场景背景色 |
+| `isRotation` | `boolean` | `false` | 是否自动旋转 |
 
 
 <!-- 

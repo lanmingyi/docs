@@ -20,19 +20,36 @@
               @click="showMat(item.key)">{{ item.label }}</button>
             <button @click="clearMat">清除</button>
           </div>
+          <div class="toolbar-row coord-pick">
+            <span class="label">坐标拾取</span>
+            <c-input-position v-model="positionValue" @after-pickup="onAfterPickup" />
+          </div>
         </div>
         <c-info-popup v-if="entityData" :data="entityData" @close="onClose" />
         <c-rightMenu />
-        <c-navigation :defaultResetView="resetPosition" />
-        <c-scale />
+        <c-navigation :defaultResetView="resetPosition"/>
+        <!-- <c-scale /> -->
+        <c-scale-select />
       </c-viewer>
+    </ClientOnly>
+
+    <h3 class="section-title">ModelView 3D 模型</h3>
+    <ClientOnly>
+      <div class="model-demo">
+        <c-model-view
+          url="/docs/model/Cesium_Air.glb"
+          :scale="0.6"
+          background-color="#f5f5f5"
+          is-rotation
+        />
+      </div>
     </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { CViewer, CInfoPopup, CRightMenu, CNavigation, CScale, useRightMenu, getOrCreateEntitySource, onViewerCreated, onLeftDown, onRightClick, onDoubleClick, defaultConfig } from '@simple/cesium'
+import { CViewer, CInfoPopup, CRightMenu, CNavigation, CScale, CScaleSelect, CModelView, CInputPosition, useRightMenu, getOrCreateEntitySource, onViewerCreated, onLeftDown, onRightClick, onDoubleClick, defaultConfig } from '@simple/cesium'
 import { useDrawPointArea, useDrawPolylineArea, useDrawPolygonArea, useDrawRectangleArea, useDrawEllipsisArea, useCreatePlaceEntity, screenToDegrees } from '@simple/cesium'
 import { Cartesian3, Cartographic, Color, Material, Primitive, EllipseGeometry, RectangleGeometry, Rectangle, CorridorGeometry, GeometryInstance, MaterialAppearance, VertexFormat, SceneMode, Entity, DistanceDisplayCondition, CallbackProperty, Transforms, Matrix4 } from 'cesium'
 
@@ -49,6 +66,11 @@ defaultConfig.DEFAULT_VIEWER_NAME = 'demo-viewer'
 const resetPosition = Cartographic.fromDegrees(119, 35.5, 2000000)
 const entityData = ref<{ id: string; source: string; name: string } | null>(null)
 const onClose = () => { entityData.value = null }
+const positionValue = ref('')
+const onAfterPickup = (pos: { latitude: number; longitude: number; height: number }) => {
+  if (!pos) return
+  // viewer?.camera.flyTo({ destination: Cartesian3.fromDegrees(pos.longitude, pos.latitude, Math.max(pos.height, 1000)) })
+}
 let bjEntity: Entity | null = null
 let shEntity: Entity | null = null
 let dynamicUpdater: (() => void) | null = null
@@ -297,9 +319,29 @@ rightMenu.setMenu({ group: 'demo', key: 'info', label: '查看属性', isShow: (
 
 <style scoped>
 .demo-box {
-  height: 500px;
   position: relative;
+}
+
+.demo-box :deep(.c-viewer) {
+  height: 500px;
+}
+
+.section-title {
+  margin: 24px 0 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.model-demo {
+  height: 400px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
   overflow: hidden;
+}
+
+.model-demo :deep(.model-view) {
+  width: 100%;
+  height: 100%;
 }
 
 .demo-box :deep(.cesium-viewer) {
@@ -344,6 +386,25 @@ rightMenu.setMenu({ group: 'demo', key: 'info', label: '查看属性', isShow: (
 
 .coord-text.muted {
   color: #999;
+}
+
+.coord-pick {
+  display: flex;
+  align-items: center;
+}
+
+.coord-pick :deep(.el-input) {
+  width: 220px;
+}
+
+.coord-pick :deep(.el-input__inner) {
+  font-size: 11px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.coord-pick :deep(.el-input__wrapper) {
+  padding: 0 8px;
 }
 
 .sep {

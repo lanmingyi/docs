@@ -5,7 +5,8 @@ import '@vitepress-demo-preview/component/dist/style.css'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import "../../public/simple-cesium/style.css"
+// import "../../public/simple-cesium/style.css"
+import "@simple/cesium/style.css"
 
 export default {
   extends: DefaultTheme,
