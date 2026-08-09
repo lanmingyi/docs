@@ -81,7 +81,7 @@ export default defineConfig({
     docFooter: { prev: '上一篇', next: '下一篇' },
     nav: [
       { text: '首页', link: '/' },
-      { text: '项目', link: '/projects/task-platform/' },
+      { text: '项目', link: '/projects/iviz-3d/' },
       { text: 'Cesium', link: '/components/simple-cesium/' },
       { text: 'UI组件', link: '/components/simple-ui/' },
     ],
