@@ -88,6 +88,11 @@ export default defineConfig({
     sidebar: {
       '/projects/': [
         {
+          text: '信息可视化-3d', collapsed: false, items: [
+            { text: '项目概述', link: '/projects/iviz-3d/' },
+          ]
+        },
+        {
           text: '任务平台', collapsed: false, items: [
             { text: '项目概述', link: '/projects/task-platform/' },
             { text: '移动端', link: '/projects/task-platform/part1-mobile' },
@@ -109,6 +114,7 @@ export default defineConfig({
             { text: '快速开始', link: '/components/simple-cesium/guide/index' },
             { text: '组件', link: '/components/simple-cesium/guide/components' },
             { text: 'Core', link: '/components/simple-cesium/guide/core' },
+            { text: 'Hooks', link: '/components/simple-cesium/guide/hooks' },
             { text: 'Utils', link: '/components/simple-cesium/guide/utils' },
             { text: 'Extensions', link: '/components/simple-cesium/guide/extensions' },
             { text: 'ViewModel', link: '/components/simple-cesium/guide/view-model' },

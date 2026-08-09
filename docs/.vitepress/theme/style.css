@@ -1,0 +1,58 @@
+/* 截图图片间距 */
+.ivz-shots {
+    display: grid;
+    gap: 16px;
+}
+
+.ivz-shots img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    cursor: zoom-in;
+}
+
+/* 图片点击预览 */
+.image-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.image-preview-overlay.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.image-preview-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.image-preview-overlay img {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.image-preview-close {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    padding: 0;
+    font-size: 36px;
+    line-height: 1;
+    color: #fff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
