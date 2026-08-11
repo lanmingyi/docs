@@ -11,14 +11,21 @@
         "vitepress": "^1.6.3"
     },
     "dependencies": {
+        "@ant-design/icons-vue": "^6.1.0",
+        "@antv/g6": "^5.1.1",
         "@turf/turf": "^6.5.0",
+        "ant-design-vue": "^4.2.0",
+        "bpmn-js": "^17.11.1",
+        "bpmn-js-token-simulation": "^0.36.3",
         "cesium": "^1.143.0",
         "cesium-navigation-es6": "^3.0.8",
+        "echarts": "^6.1.0",
         "element-plus": "^2.14.3",
         "naive-ui": "^2.44.1",
         "pinia": "^4.0.2",
         "proj4": "^2.9.2",
         "satellite.js": "^5.0.0",
-        "vite-plugin-cesium": "^1.2.23"
+        "vite-plugin-cesium": "^1.2.23",
+        "vuedraggable": "^4.1.0"
     }
 }

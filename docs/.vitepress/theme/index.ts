@@ -5,8 +5,11 @@ import '@vitepress-demo-preview/component/dist/style.css'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import Antd from 'ant-design-vue'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
 // import "../../public/simple-cesium/style.css"
 import "@simple/cesium/style.css"
+import "@simple/ui/style.css"
 import "./style.css"
 
 function setupImagePreview() {
@@ -56,7 +59,11 @@ export default {
     app.component('demo-preview', ElementPlusContainer)
     app.use(createPinia())
     app.use(ElementPlus)
-    if (typeof document !== 'undefined') {
+    app.use(Antd, { locale: zhCN })
+    if (typeof document !== 'undefined' && !import.meta.env.SSR) {
+      import('@simple/ui').then((module) => {
+        app.use(module.default)
+      })
       import('naive-ui').then(({ default: NaiveUI }) => {
         app.use(NaiveUI)
       })

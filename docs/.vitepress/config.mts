@@ -41,6 +41,8 @@ export default defineConfig({
       alias: [
         { find: /^@simple\/cesium$/, replacement: resolve(__dirname, '../public/simple/cesium/dist') },
         { find: /^@simple\/cesium\/(.*)$/, replacement: resolve(__dirname, '../public/simple/cesium/dist/$1') },
+        { find: /^@simple\/ui$/, replacement: resolve(__dirname, '../public/simple/ui/dist') },
+        { find: /^@simple\/ui\//, replacement: resolve(__dirname, '../public/simple/ui/dist') + '/' },
       ]
     },
     server: {
@@ -63,12 +65,33 @@ export default defineConfig({
         'proj4',
         'satellite.js',
         '@vueuse/core',
-        'dayjs'
+        'dayjs',
+        'bpmn-js',
+        'bpmn-js/lib/Modeler',
+        'bpmn-js-token-simulation',
+        'diagram-js',
+        'diagram-js-direct-editing',
+        'inherits-browser',
+        'echarts',
+        'vuedraggable',
+        '@antv/g6',
+        'element-plus',
+        '@element-plus/icons-vue',
+        'naive-ui',
+        'vueuc',
+        'vooks',
+        'scroll-into-view-if-needed',
+        'compute-scroll-into-view',
+        'ant-design-vue',
+        'ant-design-vue/lib/locale/zh_CN',
+        'ant-design-vue/locale/zh_CN',
+        '@ant-design/icons-vue',
+        '@ant-design/icons-svg',
       ],
     },
     ssr: {
       // external: ['cesium'], 
-      noExternal: ['pinia'],
+      noExternal: ['pinia', 'naive-ui', 'vueuc', 'vooks', 'scroll-into-view-if-needed', 'compute-scroll-into-view', 'ant-design-vue', '@ant-design/icons-vue', '@ant-design/icons-svg', 'bpmn-js', 'bpmn-js-token-simulation', 'diagram-js', 'diagram-js-direct-editing', 'inherits-browser'],
     },
   },
   markdown: {
@@ -111,7 +134,6 @@ export default defineConfig({
       '/components/simple-cesium/': [
         {
           text: 'Simple Cesium', items: [
-            { text: '快速开始', link: '/components/simple-cesium/guide/index' },
             { text: '组件', link: '/components/simple-cesium/guide/components' },
             { text: 'Core', link: '/components/simple-cesium/guide/core' },
             { text: 'Hooks', link: '/components/simple-cesium/guide/hooks' },
@@ -123,9 +145,22 @@ export default defineConfig({
       ],
       '/components/simple-ui/': [
         {
-          text: 'Simple UI', items: [
+          text: '业务组件',
+          items: [
+            { text: 'Bpmn', link: '/components/simple-ui/components/bpmn' },
+            // { text: 'FormDesign', link: '/components/simple-ui/components/form-design' },
+            // { text: 'PortalDesign', link: '/components/simple-ui/components/portal-design' },
           ]
         },
+        // {
+        //   text: '自定义',
+        //   items: [
+        //     // { text: 'DragItem', link: '/components/simple-ui/components/dragitem' },
+        //     // { text: 'Draggable', link: '/components/simple-ui/components/draggable' },
+        //     // { text: 'G6Graph', link: '/components/simple-ui/components/g6-graph' },
+        //     // { text: 'Gantt', link: '/components/simple-ui/components/gantt' },
+        //   ],
+        // },
       ],
     }
   }

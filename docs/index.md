@@ -10,7 +10,7 @@ aside: false
 | 组件 | 说明 | 
 |------|------|
 | [simple-cesium](/components/simple-cesium/) | 基于 Cesium 与 Vue 3 的地理信息可视化组件库  |
-| [simple-ui](/components/simple-ui/) |  |
+| [simple-ui](/components/simple-ui/) | 基于 Vue 3 与 TypeScript 的组件库 |
 
 ## 项目展示
 

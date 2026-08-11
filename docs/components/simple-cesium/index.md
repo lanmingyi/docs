@@ -22,3 +22,59 @@ npm install @simple/cesium
 ```
 
 要求 peer 依赖：`vue ^3.4`、`cesium 1.143` `(^1.129)`。
+
+## 全局注册组件
+
+```typescript
+import { createApp } from 'vue'
+import App from './App.vue'
+import SimpleCesium from '@simple/cesium'
+import '@simple/cesium/dist/style.css';
+
+const app = createApp(App)
+app.use(SimpleCesium)
+app.mount('#app')
+```
+
+## 按需引入
+
+```typescript
+import { CViewer, CInfoPopup, CRightMenu} from '@simple/cesium'
+```
+
+## 基础用法
+
+```vue
+<template>
+  <c-viewer name="my-viewer" @viewer-created="onCreated">
+    <c-info-popup />
+    <c-rightMenu />
+  </c-viewer>
+</template>
+
+<script setup lang="ts">
+import { onViewerCreated } from '@simple/cesium'
+
+const onViewerCreated((viewer) => {
+  console.log('viewer 已创建')
+})
+</script>
+```
+
+## 使用 API
+
+```typescript
+import { createViewer, getViewer, getScene } from '@simple/cesium'
+
+// 创建 Viewer
+const viewer = createViewer('cesium-box', {
+  infoBox: false,
+  animation: false
+})
+
+// 获取 Viewer
+const viewer = getViewer()
+
+// 获取 Scene
+const scene = getScene()
+```
