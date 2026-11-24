@@ -107,6 +107,7 @@ export default defineConfig({
       { text: '项目', link: '/projects/iviz-3d/' },
       { text: 'Cesium', link: '/components/simple-cesium/' },
       { text: 'UI组件', link: '/components/simple-ui/' },
+      { text: '量化交易', link: '/projects/quantitative-trading/' },
     ],
     sidebar: {
       '/projects/': [
@@ -128,6 +129,11 @@ export default defineConfig({
             { text: '学生端', link: '/projects/vsimet-platform/student' },
             { text: '管理端', link: '/projects/vsimet-platform/admin' },
             { text: '智慧教室H5', link: '/projects/vsimet-platform/h5' }
+          ]
+        },
+        {
+          text: '量化交易平台', collapsed: false, items: [
+            { text: '在线演示', link: '/projects/quantitative-trading/' },
           ]
         }
       ],
